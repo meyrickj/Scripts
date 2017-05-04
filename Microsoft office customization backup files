@@ -1,0 +1,16 @@
+for /d %%a in (C:\Users\*) do (
+    IF NOT EXIST "%%a\Desktop\Office365 Prep" (
+        mkdir "%%a\Desktop\Office365 Prep"
+    )
+    mkdir "%%a\Desktop\Office365 Prep\Signatures"
+    mkdir "%%a\Desktop\Office365 Prep\Dictonary"
+    mkdir "%%a\Desktop\Office365 Prep\Out Of office"
+    mkdir "%%a\Desktop\Office365 Prep\Ribbon Customizations"
+    mkdir "%%a\Desktop\Office365 Prep\Scripts_Config365"
+
+    robocopy "%%a\AppData\Roaming\Microsoft\Signatures" "%%a\Desktop\Office365 Prep\Signatures" 
+    robocopy "%%a\AppData\Roaming\Microsoft\UProof" "%%a\Desktop\Office365 Prep\Dictonary" 
+    robocopy "%%a\AppData\Local\Microsoft\Office" "%%a\Desktop\Office365 Prep\Ribbon Customizations"  *.officeUI 
+
+    robocopy "C:\kworking\O365" "%%a\Desktop\Office365 Prep\Scripts_Config365" 
+)
